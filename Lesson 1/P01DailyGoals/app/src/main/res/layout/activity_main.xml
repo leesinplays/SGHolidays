@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMaterials"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Read up on materials before class"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvQ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Did I achieve this goal today?" />
+        <RadioGroup android:id="@+id/radioGroup1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioButton android:id="@+id/yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" android:text="Yes1" />
+
+            <RadioButton android:id="@+id/no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No1" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvPunctual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arrive on time so as not to miss important part of the lesson"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvQ2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Did I achieve this goal today?" />
+
+        <RadioGroup android:id="@+id/radioGroup2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioButton android:id="@+id/yes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" android:text="Yes" />
+
+            <RadioButton android:id="@+id/no2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvProblem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attempt the problem myself"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvQ3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Did I achieve this goal today?" />
+
+        <RadioGroup android:id="@+id/radioGroup3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RadioButton android:id="@+id/yes3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true" android:text="Yes" />
+
+            <RadioButton android:id="@+id/no3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/tvReflection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My personal reflection today"
+            android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/reflection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/OK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </LinearLayout>
+</ScrollView>
