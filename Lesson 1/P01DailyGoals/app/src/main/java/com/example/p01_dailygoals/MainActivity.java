@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View arg0) {
+
+                TextView tv1 = (TextView) findViewById(R.id.tvMaterials);
 
                 // Get the RadioGroup object
                 RadioGroup rg1 = (RadioGroup) findViewById(R.id.radioGroup1);
@@ -41,8 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
                 // Get the EditText that user keys in reflection
                 EditText etReflection = (EditText) findViewById(R.id.reflection);
-                // Put the name and age into an array
-                String[] info = {etReflection.getText().toString()};
+                // Put the info into an array
+                String[] info = {rb1.getText().toString(),
+                        rb2.getText().toString(),
+                        rb3.getText().toString(),
+                        etReflection.getText().toString()};
                 // Create an intent to start another activity called
                 //  DemoActivities (which we would create later)
                 Intent i = new Intent(MainActivity.this,
