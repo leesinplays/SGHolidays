@@ -16,9 +16,15 @@
         android:text="Hi" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Send Email" />
+
+    <Button
+        android:id="@+id/buttonRP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="RP" />
 
 </LinearLayout>
