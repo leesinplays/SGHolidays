@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView lvModule;
     ArrayList<ModuleCode> moduleCodes;
-    ArrayAdapter aaType;
+    ArrayAdapter aaModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         moduleCodes.add(new ModuleCode("C302", "Web Services"));
         moduleCodes.add(new ModuleCode("C347", "Android Programming II"));
 
-        aaType = new ModuleAdapter(this, R.layout.modulerow, moduleCodes);
-        lvModule.setAdapter(aaType);
+        aaModule = new ModuleAdapter(this, R.layout.modulerow, moduleCodes);
+        lvModule.setAdapter(aaModule);
 
 
         lvModule.setOnItemClickListener(new AdapterView.OnItemClickListener() {

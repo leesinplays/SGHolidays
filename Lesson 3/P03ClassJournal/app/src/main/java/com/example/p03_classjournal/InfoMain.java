@@ -1,5 +1,7 @@
 package com.example.p03_classjournal;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,11 +9,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
 public class InfoMain extends AppCompatActivity {
+
     ListView lvDg;
     ArrayAdapter aaModule;
     ArrayList<DailyCA> C302;
@@ -38,7 +39,7 @@ public class InfoMain extends AppCompatActivity {
         C347.add(new DailyCA("C", "C347", 2));
         C347.add(new DailyCA("A", "C347", 3));
 
-        if (module == "C302") {
+        if (module.equals("C302")) {
             aaModule = new DgAdapter(this, R.layout.dgrow, C302);
             lvDg.setAdapter(aaModule);
             lvDg.setOnItemClickListener(new AdapterView.OnItemClickListener() {
