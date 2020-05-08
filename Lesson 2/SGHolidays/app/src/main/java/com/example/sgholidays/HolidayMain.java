@@ -33,8 +33,7 @@ public class HolidayMain extends AppCompatActivity {
         Intent i = getIntent();
         String type = i.getStringExtra(Intent.EXTRA_TEXT);
         tvType.setText(type);
-
-// Create a few food objects in Food array
+        // Create a few food objects in Food array
         holiday1 = new ArrayList<Holiday>();
         holiday1.add(new Holiday("New Year's Day", "1 Jan 2017",
                 "New Year's Day is a public holiday in Singapore. ... Singapore" +
