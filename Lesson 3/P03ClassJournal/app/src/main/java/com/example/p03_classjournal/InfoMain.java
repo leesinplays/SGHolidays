@@ -22,7 +22,7 @@ public class InfoMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.info_main);
+        setContentView(R.layout.activity_info_main);
 
         lvDg = (ListView) this.findViewById(R.id.lvDg);
 
