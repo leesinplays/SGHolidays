@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public ArrayList<Task> getTask() {
+    public ArrayList<Task> getTasks() {
         //TODO return records in Java objects
 
         ArrayList<Task> toDos = new ArrayList<Task>();
