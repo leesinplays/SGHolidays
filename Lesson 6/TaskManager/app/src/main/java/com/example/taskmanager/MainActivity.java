@@ -50,15 +50,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        lvTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Task n = al.get(position);
-                Intent i = new Intent(MainActivity.this, AddActivity.class);
-                i.putExtra("todo", n);
-                startActivityForResult(i, 9);
-            }
-        });
     }
 
     @Override
