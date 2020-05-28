@@ -53,7 +53,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<Task> getTasks() {
         //TODO return records in Java objects
 
-        ArrayList<Task> toDos = new ArrayList<Task>();
+        ArrayList<Task> tasks = new ArrayList<Task>();
         String selectQuery = "SELECT " + COLUMN_ID + ", "
                 + COLUMN_NAME + ", "
                 + COLUMN_DESC
@@ -68,12 +68,12 @@ public class DBHelper extends SQLiteOpenHelper {
                 String name = cursor.getString(1);
                 String desc = cursor.getString(2);
                 Task obj = new Task(id, name, desc);
-                toDos.add(obj);
+                tasks.add(obj);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return toDos;
+        return tasks;
     }
 
 }
