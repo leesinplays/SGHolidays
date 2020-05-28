@@ -63,7 +63,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<ToDo> getToDo() {
         //TODO return records in Java objects
 
-        ArrayList<ToDo> notes = new ArrayList<ToDo>();
+        ArrayList<ToDo> toDos = new ArrayList<ToDo>();
         String selectQuery = "SELECT " + COLUMN_ID + ", "
                 + COLUMN_DATE + ", "
                 + COLUMN_REMINDER
@@ -78,12 +78,64 @@ public class DBHelper extends SQLiteOpenHelper {
                 String date = cursor.getString(1);
                 String data = cursor.getString(2);
                 ToDo obj = new ToDo(id, date, data);
-                notes.add(obj);
+                toDos.add(obj);
             } while (cursor.moveToNext());
         }
         cursor.close();
         db.close();
-        return notes;
+        return toDos;
+    }
+
+    public ArrayList<ToDo> getToDoRecents() {
+        //TODO return records in Java objects
+
+        ArrayList<ToDo> toDos = new ArrayList<ToDo>();
+        String selectQuery = "SELECT " + COLUMN_ID + ", "
+                + COLUMN_DATE + ", "
+                + COLUMN_REMINDER
+                + " FROM " + TABLE_TODO + " ORDER BY " + COLUMN_ID +" DESC limit 10";
+        // googled
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String date = cursor.getString(1);
+                String data = cursor.getString(2);
+                ToDo obj = new ToDo(id, date, data);
+                toDos.add(obj);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return toDos;
+    }
+
+    public int updateToDo(ToDo data) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_REMINDER, data.getData());
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(data.getId())};
+        int result = db.update(TABLE_TODO, values, condition, args);
+        db.close();
+        if (result < 1){
+            Log.d("DBHelper", "Update failed");
+        }
+        return result;
+    }
+
+    public int deleteToDo(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String condition = COLUMN_ID + "= ?";
+        String[] args = {String.valueOf(id)};
+        int result = db.delete(TABLE_TODO, condition, args);
+        db.close();
+        if (result < 1){
+            Log.d("DBHelper", "Update failed");
+        }
+        return result;
     }
 }
 

@@ -1,15 +1,19 @@
 package com.myapplicationdev.android.lp2_quiz;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.SimpleDateFormat;
@@ -22,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnSubmit;
     EditText etData;
     ListView lv;
-    ArrayList <ToDo> al;
+    ArrayList<ToDo> al;
     CustomAdapter ca;
 
     @Override
@@ -43,28 +47,29 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String data = etData.getText().toString();
                 String date = getDate();
-                if (!data.isEmpty()){
+                if (!data.isEmpty()) {
                     DBHelper dbhelper = new DBHelper(MainActivity.this);
                     dbhelper.insertToDo(data, date);
                 }
                 etData.setText("");
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(etData.getWindowToken(), 0);
+
             }
         });
 
-//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                ToDo n = al.get(position);
-//                Intent i = new Intent(MainActivity.this, ModifyActivity.class);
-//                i.putExtra("todo", n);
-//                startActivity(i);
-//            }
-//        });
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ToDo n = al.get(position);
+                Intent i = new Intent(MainActivity.this, ModifyActivity.class);
+                i.putExtra("todo", n);
+                startActivityForResult(i, 9);
+            }
+        });
     }
 
-    protected String getDate(){
+    protected String getDate() {
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
         String formattedDate = df.format(c);
@@ -87,8 +92,23 @@ public class MainActivity extends AppCompatActivity {
                 al.addAll(dbhelper.getToDo());
                 ca.notifyDataSetChanged();
                 return true;
-
+            case R.id.mnuRecent:
+                al.clear();
+                ;
+                al.addAll(dbhelper.getToDoRecents());
+                ca.notifyDataSetChanged();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && requestCode == 9) {
+            ca.notifyDataSetChanged();
+        }
+
     }
 }

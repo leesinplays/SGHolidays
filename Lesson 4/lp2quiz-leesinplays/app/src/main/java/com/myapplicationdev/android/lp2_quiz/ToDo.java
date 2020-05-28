@@ -1,6 +1,8 @@
 package com.myapplicationdev.android.lp2_quiz;
 
-public class ToDo {
+import java.io.Serializable;
+
+public class ToDo implements Serializable {
     private int id;
     private String date;
     private String data;
@@ -21,5 +23,23 @@ public class ToDo {
 
     public String getData() {
         return data;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Id=" + id + ", Date='" + date + '\'' +
+                ", Data='" + data + '\'';
     }
 }
