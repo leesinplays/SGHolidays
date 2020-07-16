@@ -6,6 +6,8 @@ import android.os.IBinder;
 import android.util.Log;
 
 public class MyService extends Service {
+    public MyService() {
+    }
 
     boolean started;
 
@@ -37,6 +39,4 @@ public class MyService extends Service {
         Log.d("Service", "Service exited");
         super.onDestroy();
     }
-
 }
-
