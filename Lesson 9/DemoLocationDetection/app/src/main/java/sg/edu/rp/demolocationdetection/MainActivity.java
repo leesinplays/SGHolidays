@@ -52,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
                     double lat = data.getLatitude();
                     double lng = data.getLongitude();
                 }
-            };
+            }
+
+            ;
         };
 
 
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private boolean checkPermission(){
+    private boolean checkPermission() {
         int permissionCheck_Coarse = ContextCompat.checkSelfPermission(
                 MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION);
         int permissionCheck_Fine = ContextCompat.checkSelfPermission(
