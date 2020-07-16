@@ -10,14 +10,20 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class MainActivity extends AppCompatActivity {
 
     String folderLocation;
     //UI handlers to be defined
     Button btnWrite, btnRead;
+    TextView tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //UI handlers to be defined
+        btnWrite = (Button) findViewById(R.id.btnWrite);
+        btnRead = (Button) findViewById(R.id.btnRead);
+        tv = (TextView) findViewById(R.id.tv);
 
         folderLocation = Environment.getExternalStorageDirectory().getAbsolutePath() +
                 "/MyFolder";
@@ -41,6 +50,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Code for file writing
+                File targetFile = new File(folderLocation, "data.txt");
+
+                try {
+                    FileWriter writer = new FileWriter(targetFile, true);
+                    writer.write("Hello world"+"\n");
+                    writer.flush();
+                    writer.close();
+
+                } catch (Exception e) {
+                    Toast.makeText(MainActivity.this, "Failed to Write!",
+                            Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -48,6 +70,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Code for file reading
+                File targetFile = new File(folderLocation, "data.txt");
+
+                if (targetFile.exists()) {
+                    String data = "";
+                    try {
+                        FileReader reader = new FileReader(targetFile);
+                        BufferedReader br = new BufferedReader(reader);
+                        String line = br.readLine();
+                        while (line != null) {
+                            data += line + "\n";
+                            line = br.readLine();
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(MainActivity.this, "Failed to Read!",
+                                Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                    }
+                    tv.setText(data);
+                }
             }
         });
     }
