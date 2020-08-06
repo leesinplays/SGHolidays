@@ -38,15 +38,6 @@
             android:layout_height="wrap_content"
             android:text="Button" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAnniversary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:layout_marginLeft="270dp"
-            android:src="@android:drawable/ic_menu_search"
-            app:backgroundTint="#E91E63" />
-
     </LinearLayout>
 
 </LinearLayout>
