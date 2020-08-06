@@ -1,4 +1,4 @@
-package sg.edu.rp.problemstatement;
+package sg.edu.rp.c347L11problemstatement;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
